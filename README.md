@@ -21,7 +21,7 @@ All in one Web application for AI tools such as Chatbot, Image generation, Code 
 
 Chatbot, Image generation and Code generation works through OpenAI Api
 
-App and Postgres Database are hosted in [Railway.app](railway.app)
+App and Postgres Database are hosted in [Railway.app](https://railway.app)
 
-You can access the Ai Tools website [HERE](ai-tools-prod.up.railway.app) 
+You can access the Ai Tools website [HERE](https://ai-tools-prod.up.railway.app) 
 
