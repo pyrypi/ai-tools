@@ -1,7 +1,9 @@
 
 
 ## AI TOOLS
-All in one Web application for AI tools such as Chatbot, Image generation, Code generation, Video Generation, Text to speech Generation
+All in one Web application for AI tools such as Chatbot, Image generation and Code generation.
+
+Video Generation, Text to speech Generation and more features are implemented to the website later hopefully, so this web app is work in progress!
 
 You can access the Ai Tools website [HERE](https://ai-tools-prod.up.railway.app) 
 
