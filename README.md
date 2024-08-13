@@ -16,11 +16,15 @@ You can access the Ai Tools website [HERE](https://ai-tools-prod.up.railway.app)
 
 -Prisma
 
+-React-Hook-Forms
+
 -Clerk Authentication
 
 -Vercel AI SDK
 
--React-Hook-Forms
+-Shadcn/ui
+
+-Aceternity UI
 
 
 Chatbot, Image generation and Code generation works through OpenAI Api
