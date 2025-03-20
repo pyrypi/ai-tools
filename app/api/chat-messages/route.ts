@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { getChatMessages } from "@/lib/api_limits";
 import { auth } from "@clerk/nextjs";
 
-export const dynamic = "force-dynamic";
-
 export async function GET(req: Request) {
   try {
     const { userId } = auth();
