@@ -1,14 +1,14 @@
 "use client";
 
 import { Montserrat } from "next/font/google";
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-const font = Montserrat({ weight: '600', subsets: ['latin'] });
+const font = Montserrat({ weight: "600", subsets: ["latin"] });
 
 export const LandingNavbar = () => {
   const { isSignedIn } = useAuth();
@@ -16,20 +16,21 @@ export const LandingNavbar = () => {
   return (
     <nav className="p-4 bg-transparent flex items-center justify-between">
       <Link href="/" className="flex items-center">
-        <div className="relative h-8 w-8 mr-4">
-          
-        </div>
+        <div className="relative h-8 w-8 mr-4"></div>
         <h1 className={cn("text-2xl font-bold text-white", font.className)}>
           AI TOOLS
         </h1>
       </Link>
       <div className="flex items-center gap-x-2">
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
-          <Button variant="outline" className="rounded-full bg-gradient-to-r from-blue-600 to-green-400">
+          <Button
+            variant="outline"
+            className="rounded-full bg-gradient-to-r from-blue-600 to-green-400"
+          >
             Get Started
           </Button>
         </Link>
       </div>
     </nav>
-  )
-}
+  );
+};

@@ -4,7 +4,7 @@ import * as z from "zod";
 import axios from "axios";
 
 import { useForm } from "react-hook-form";
-import { formSchema, amountOptions, resolutionOptions} from "./constants";
+import { formSchema, amountOptions, resolutionOptions } from "./constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { Download, ImageIcon, Send } from "lucide-react";
@@ -14,16 +14,20 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/empty";
 import { Loader } from "@/components/loader";
-import { Select, SelectContent, SelectTrigger, SelectValue, SelectItem } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectTrigger,
+  SelectValue,
+  SelectItem,
+} from "@/components/ui/select";
 import Image from "next/image";
 import { Card, CardFooter } from "@/components/ui/card";
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-
 const ImagePage = () => {
-
   const router = useRouter();
 
   const [photos, setPhotos] = useState<string[]>([]);
@@ -33,8 +37,8 @@ const ImagePage = () => {
     defaultValues: {
       prompt: "",
       amount: "1",
-      resolution: "512x512"
-    }
+      resolution: "512x512",
+    },
   });
 
   const isLoading = form.formState.isSubmitting;
@@ -43,19 +47,18 @@ const ImagePage = () => {
     try {
       setPhotos([]);
 
-      const response = await axios.post('/api/image', values);
+      const response = await axios.post("/api/image", values);
 
       const urls = response.data.map((image: { url: string }) => image.url);
-      
+
       setPhotos(urls);
     } catch (error: any) {
       return error;
     } finally {
       router.refresh();
       //console.log(photos);
-      
     }
-  }
+  };
 
   return (
     <div>
@@ -68,8 +71,8 @@ const ImagePage = () => {
       />
       <div className="px-4 lg:px-8">
         <Form {...form}>
-          <form 
-            onSubmit={form.handleSubmit(onSubmit)} 
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
             className="
             bg-[#03080f]
               bg-opacity-70
@@ -91,8 +94,8 @@ const ImagePage = () => {
                   <FormControl className="m-0 p-0">
                     <Input
                       className="p-2 border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent text-black"
-                      disabled={isLoading} 
-                      placeholder="Generate an image..." 
+                      disabled={isLoading}
+                      placeholder="Generate an image..."
                       {...field}
                     />
                   </FormControl>
@@ -104,10 +107,10 @@ const ImagePage = () => {
               name="amount"
               render={({ field }) => (
                 <FormItem className="col-span-12 lg:col-span-2 text-black">
-                  <Select 
-                    disabled={isLoading} 
-                    onValueChange={field.onChange} 
-                    value={field.value} 
+                  <Select
+                    disabled={isLoading}
+                    onValueChange={field.onChange}
+                    value={field.value}
                     defaultValue={field.value}
                   >
                     <FormControl>
@@ -117,10 +120,7 @@ const ImagePage = () => {
                     </FormControl>
                     <SelectContent>
                       {amountOptions.map((option) => (
-                        <SelectItem 
-                          key={option.value} 
-                          value={option.value}
-                        >
+                        <SelectItem key={option.value} value={option.value}>
                           {option.label}
                         </SelectItem>
                       ))}
@@ -134,10 +134,10 @@ const ImagePage = () => {
               name="resolution"
               render={({ field }) => (
                 <FormItem className="col-span-12 lg:col-span-2 text-black">
-                  <Select 
-                    disabled={isLoading} 
-                    onValueChange={field.onChange} 
-                    value={field.value} 
+                  <Select
+                    disabled={isLoading}
+                    onValueChange={field.onChange}
+                    value={field.value}
                     defaultValue={field.value}
                   >
                     <FormControl>
@@ -147,10 +147,7 @@ const ImagePage = () => {
                     </FormControl>
                     <SelectContent>
                       {resolutionOptions.map((option) => (
-                        <SelectItem 
-                          key={option.value} 
-                          value={option.value}
-                        >
+                        <SelectItem key={option.value} value={option.value}>
                           {option.label}
                         </SelectItem>
                       ))}
@@ -159,7 +156,12 @@ const ImagePage = () => {
                 </FormItem>
               )}
             />
-            <Button className="col-span-12 lg:col-span-2 w-full" type="submit" disabled={isLoading} size="icon">
+            <Button
+              className="col-span-12 lg:col-span-2 w-full"
+              type="submit"
+              disabled={isLoading}
+              size="icon"
+            >
               Generate
             </Button>
           </form>
@@ -176,14 +178,14 @@ const ImagePage = () => {
           {photos.map((src) => (
             <Card key={src} className="rounded-lg overflow-hidden">
               <div className="relative aspect-square">
-                <Image
-                  fill
-                  alt="Generated"
-                  src={src}
-                />
+                <Image fill alt="Generated" src={src} />
               </div>
               <CardFooter className="p-2">
-                <Button onClick={() => window.open(src)} variant="secondary" className="w-full">
+                <Button
+                  onClick={() => window.open(src)}
+                  variant="secondary"
+                  className="w-full"
+                >
                   <Download className="h-4 w-4 mr-2" />
                   Download
                 </Button>
@@ -193,7 +195,7 @@ const ImagePage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ImagePage;
