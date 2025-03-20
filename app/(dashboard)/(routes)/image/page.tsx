@@ -56,7 +56,6 @@ const ImagePage = () => {
       return error;
     } finally {
       router.refresh();
-      //console.log(photos);
     }
   };
 
